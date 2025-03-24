@@ -1,0 +1,127 @@
+/* General Styling */
+body {
+    background-color: #121212; /* Dark background */
+    color: #13898f; /* Light text for readability */
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    line-height: 1.6; /* Improve text readability */
+}
+
+/* Blog Images */
+.blog-image {
+    width: 100%; /* Full width of container */
+    height: 250px; /* Fixed height for uniformity */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 12px; /* Rounded edges */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Subtle shadow for 3D effect */
+}
+
+/* Blog Container */
+.blog-container {
+    background-color: #1e1e1e;
+    border-radius: 15px; /* Rounded corners */
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 15px #13898f; /* Elevated card effect */
+    transition: transform 0.3s ease-in-out;
+}
+
+.blog-container:hover {
+    transform: scale(1.03); /* Slight zoom on hover */
+}
+
+/* Blog Post */
+.blog-post {
+    border: 1px solid #13898f; /* Subtle border */
+    border-radius: 12px; /* Rounded corners */
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: #2a2a2a;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.blog-post:hover {
+    box-shadow: 0 6px 12px #13898f; /* Enhanced shadow on hover */
+}
+
+/* Forms */
+.search-form, .filter-form {
+    margin-bottom: 25px;
+}
+
+.search-input, .filter-form input {
+    padding: 12px;
+    width: 70%;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: 1px solid #13898f;
+    background-color: #2a2a2a;
+    color: #13898f; /* For visibility */
+    transition: border-color 0.3s ease-in-out;
+}
+
+.search-input:focus, .filter-form input:focus {
+    border-color: #13898f; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Buttons */
+.filter-button, .search-button {
+    padding: 12px 20px;
+    background-color: #13898f;
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.filter-button:hover, .search-button:hover {
+    background-color: #13898f; /* Darker shade on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Primary Buttons */
+.btn-primary {
+    background-color: #13898f;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #000000; /* Darker shade on hover */
+}
+
+.filter-form {
+    color: #13898f;
+}
+
+/* Featured Content */
+.featured-content {
+    background-color: #2a2a2a; /* پس‌زمینه تیره */
+    color: #ffffff; /* متن سفید */
+    padding: 20px; /* فاصله داخلی */
+    border-radius: 12px; /* لبه‌های گرد */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* سایه برای عمق */
+    margin-top: 40px; /* فاصله از بالای صفحه */
+    text-align: center; /* متن در وسط */
+}
+
+/* Button Styles */
+.btn-dark {
+    background-color: #13898f; /* رنگ پس‌زمینه دکمه */
+    color: #ffffff; /* رنگ متن دکمه */
+    padding: 10px 20px; /* فاصله داخلی دکمه */
+    border: none; /* بدون حاشیه */
+    border-radius: 8px; /* لبه‌های گرد */
+    cursor: pointer; /* نشانگر ماوس به شکل دست */
+    transition: background-color 0.3s ease-in-out; /* انیمیشن تغییر رنگ */
+    text-decoration: none; /* بدون خط زیر */
+}
+
+.btn-dark:hover {
+    background-color: #0f7a7f; /* رنگ تیره‌تر هنگام هاور */
+}

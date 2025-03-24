@@ -1,0 +1,28 @@
+<!-- delete_comment.html -->
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}حذف نظر{% endblock %}
+{% block content %}
+
+<div class="comment-delete-wrapper">
+    <div class="comment-delete-modal">
+        <h1 class="comment-delete-heading">حذف نظر</h1>
+        <div class="comment-delete-content">
+            <p>آیا مطمئن هستید که می‌خواهید این نظر را حذف کنید؟</p>
+            <div class="comment-delete-preview">
+                <p>"{{ object.content }}"</p>
+            </div>
+        </div>
+        
+        <form method="post" class="comment-delete-form">
+            {% csrf_token %}
+            <div class="comment-delete-actions">
+                <button type="submit" class="comment-delete-btn comment-delete-confirm">حذف دائمی</button>
+                <a href="{% url 'blog_detail' slug=object.blog.slug %}" class="comment-delete-btn comment-delete-cancel">انصراف</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

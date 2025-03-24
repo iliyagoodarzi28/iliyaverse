@@ -1,0 +1,83 @@
+/* General Styles for Modal */
+.comment-delete-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* پس‌زمینه مات */
+    z-index: 1000;
+}
+.comment-delete-modal {
+    background-color: #1a1a1a; /* مشکی تم کلی */
+    border-radius: 10px;
+    padding: 20px 30px;
+    width: 90%;
+    max-width: 500px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.comment-delete-heading {
+    font-size: 1.8rem;
+    color: #13898f; /* رنگ اصلی */
+    margin-bottom: 10px;
+}
+
+/* Content */
+.comment-delete-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+.comment-delete-preview p {
+    font-style: italic;
+    color: #ccc;
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Form Actions */
+.comment-delete-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.comment-delete-btn {
+    padding: 10px 20px;
+    font-size: 1.7rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+.comment-delete-confirm {
+    background-color: #13898f; /* دکمه تایید با رنگ اصلی */
+    color: #fff;
+}
+.comment-delete-confirm:hover {
+    background-color: #0f6b72; /* تغییر رنگ هنگام هاور */
+}
+.comment-delete-cancel {
+    background-color: #555;
+    color: #fff;
+}
+.comment-delete-cancel:hover {
+    background-color: #333;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .comment-delete-modal {
+        padding: 15px 20px;
+    }
+    .comment-delete-heading {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,66 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}{{ blog.name }}{% endblock %}
+{% block extra_headers %}
+
+{% endblock %}
+{% block content %}
+<!-- Page Header -->
+<header class="blog-header" style="background-image: url('{{ blog.image.url }}');">
+    <div class="blog-header-container">
+        <div class="blog-header-heading">
+            <h1>{{ blog.name }}</h1>
+            <hr class="header-divider">
+            <span class="blog-header-subtitle">{{ blog.slug }}</span>
+        </div>
+    </div>
+</header>
+
+<!-- Blog Content -->
+<div class="blog-main-container" dir="rtl">
+    <article class="blog-content-container">
+        <h1 class="blog-title">{{ blog.name }}</h1>
+        <hr class="content-divider">
+        <div class="blog-meta-info">
+            <p class="blog-description">{{ blog.description|safe }}
+                {{ form.media }}
+            </p>
+            <time class="blog-date">{{ blog.get_persian_date }}</time>
+        </div>
+        <div class="blog-body">
+            {{ blog.content|safe }}
+        </div>
+    </article>
+
+    <section class="comments-section">
+        <h2 class="comments-title">نظرات</h2>
+        {% for comment in comments %}
+            <div class="comment-item">
+                <div class="comment-header">
+                    <strong class="comment-name">{{ comment.name }}</strong>
+                    <time class="comment-date">{{ comment.get_persian_created_at }}</time>
+                </div>
+                <p class="comment-content">{{ comment.content }}</p>
+                <div class="comment-actions">
+                    <a href="{% url 'edit_comment' comment.id %}" class="action-btn comment-edit-btn">ویرایش</a>
+                    <a href="{% url 'delete_comment' comment.id %}" class="action-btn comment-delete-btn">حذف</a>
+                </div>
+            </div>
+        {% empty %}
+            <p class="no-comments-msg">هیچ نظری وجود ندارد.</p>
+        {% endfor %}
+    </section>
+
+    <section class="comment-form-section">
+        <h3 class="form-title">ارسال نظر</h3>
+        <form method="post" class="comment-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="action-btn form-submit-btn">ارسال نظر</button>
+        </form>
+    </section>
+</div>
+
+
+
+{% endblock %}

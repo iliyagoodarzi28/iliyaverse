@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}صفحه اصلی{% endblock %}
+{% block extra_headers %} 
+
+
+   
+
+{% endblock %}
+{% block content %}
+<header class="intro-header" style="background-image: url('{{ site_info.image.url }}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>{{ site_info.name }}</h1>
+                    <hr class="small">
+                    <span class="subheading">مهم ترین چیز این است که متوقف نشویم</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="latest-posts">
+    <h2>آخرین مقالات</h2>
+    <ul>
+        {% for blog in latest_posts %}
+            <li>
+                <img src="{{ blog.image.url }}" alt="{{ blog.name }}" class="post-image" />
+                <h3>{{ blog.name }}</h3>
+                <p>{{ blog.description|truncatewords:20|safe}}</p>
+                <a href="{{ blog.get_absolute_url }}" class="read-more-link">ادامه مطلب</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'blog' %}" class="all-posts-link">مشاهده همه مقالات</a>
+</section>
+
+
+
+<!-- Main Content -->
+
+
+
+
+{% endblock %}

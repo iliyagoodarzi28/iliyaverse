@@ -1,0 +1,49 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}ویرایش نظر{% endblock %}
+{% block content %}
+
+<div class="comment-editor">
+    <div class="editor-panel">
+        <h1 class="editor-heading">
+            <i class="fas fa-edit"></i>
+            ویرایش نظر
+        </h1>
+        
+        <form method="post" class="editor-form">
+            {% csrf_token %}
+            
+            <div class="input-wrapper">
+                <label for="{{ form.name.id_for_label }}">نام شما:</label>
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+
+            <div class="input-wrapper">
+                <label for="{{ form.email.id_for_label }}">ایمیل:</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <div class="input-wrapper">
+                <label for="{{ form.content.id_for_label }}">متن نظر:</label>
+                {{ form.content }}
+                {{ form.content.errors }}
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="primary-button">
+                    <i class="fas fa-save"></i>
+                    ذخیره تغییرات
+                </button>
+                <a href="{% url 'blog_detail' slug=object.blog.slug %}" class="secondary-button">
+                    <i class="fas fa-times"></i>
+                    انصراف
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}مقالات{% endblock %}
+{% block extra_headers %}
+
+{% endblock %}
+{% block content %}
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>مقالات</h1>
+                    <hr class="small">
+                    <span class="subheading">به مقالات سایت خوش امدید</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-preview">
+                <div class="blog-container" dir="rtl">
+                    <form class="search-form" method="get" action="">
+                        <input type="text" name="q" placeholder="جستجو..." value="{{ request.GET.q }}" class="search-input">
+                        <button type="submit" class="search-button">جستجو</button>
+                    </form>                    
+                    <ul>
+                        <div class="filter-form-container">
+                            <form method="get" class="filter-form">
+                                {{ form.as_p }}
+                                <button type="submit" class="filter-button">فیلتر</button>
+                            </form>
+                        </div>
+                    </ul>
+                    {% for blog in blogs %}
+                    <div class="blog-post">
+                        <img src="{{ blog.image.url }}" class="blog-image" alt="Blog Photo">
+                        <h2 class="blog-title">{{ blog.name }}</h2>
+                        <p class="blog-date">{{ blog.get_persian_date }}</p>
+                        <p>بازدیدها: {{ blog.views }}</p>
+                        <a href="{{ blog.get_absolute_url }}" class="btn btn-primary">خواندن</a>
+                    </div>
+                {% empty %}
+                    <p>مقاله‌ای یافت نشد.</p>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+{% endblock %}

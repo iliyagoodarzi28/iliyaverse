@@ -1,0 +1,241 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazir', 'Arial', sans-serif; /* فونت فارسی و انگلیسی */
+    background-color: #000; /* تم مشکی */
+    color: #fff;
+    line-height: 1.8;
+    direction: rtl; /* متن راست‌چین */
+}
+
+/* Header Styling */
+.blog-header {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* ارتفاع ثابت برای هدر */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.blog-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* لایه تیره برای بهبود خوانایی متن */
+}
+
+.blog-header-container {
+    position: relative;
+    z-index: 1;
+}
+
+.blog-header-heading h1 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.header-divider {
+    width: 60px;
+    height: 3px;
+    background: #13898f; /* رنگ اصلی */
+    border: none;
+    margin: 15px auto;
+}
+
+.blog-header-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Blog Main Content */
+.blog-main-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #1a1a1a; /* پس‌زمینه تیره‌تر */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.blog-content-container {
+    margin-bottom: 40px;
+}
+
+.blog-title {
+    font-size: 2rem;
+    color: #13898f; /* رنگ اصلی */
+    margin-bottom: 15px;
+}
+
+.content-divider {
+    width: 100%;
+    height: 2px;
+    background: #13898f; /* رنگ اصلی */
+    margin: 20px 0;
+}
+
+.blog-meta-info {
+    margin-bottom: 20px;
+}
+
+.blog-description {
+    font-size: 2rem;
+    color: #ccc;
+}
+
+.blog-date {
+    font-size: 1.1rem;
+    color: #999;
+    display: block;
+    margin-top: 10px;
+}
+
+.blog-body {
+    font-size: 2rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.blog-body a {
+    color: #13898f; /* رنگ اصلی برای لینک‌ها */
+    text-decoration: none;
+}
+
+.blog-body a:hover {
+    text-decoration: underline;
+}
+
+/* Comments Section */
+.comments-section {
+    margin-top: 40px;
+}
+
+.comments-title {
+    font-size: 2rem;
+    color: #13898f; /* رنگ اصلی */
+    margin-bottom: 20px;
+}
+
+.comment-item {
+    border-bottom: 1px solid #333;
+    padding: 15px 0;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-name {
+    color: #13898f; /* رنگ اصلی */
+    font-weight: bold;
+}
+
+.comment-date {
+    font-size: 1.1rem;
+    color: #999;
+}
+
+.comment-content {
+    font-size: 2rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.comment-actions {
+    margin-top: 10px;
+}
+
+.action-btn {
+    color: #13898f; /* رنگ اصلی */
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 2rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.action-btn:hover {
+    color: #0f6b72; /* رنگ تیره‌تر برای هاور */
+}
+
+.no-comments-msg {
+    font-size: 2rem;
+    color: #999;
+    text -align: center;
+}
+
+/* Comment Form */
+.comment-form-section {
+    margin-top: 40px;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    color: #13898f; /* رنگ اصلی */
+    margin-bottom: 15px;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-form input,
+.comment-form textarea {
+    background: #2a2a2a; /* پس‌زمینه تیره برای فرم */
+    border: 1px solid #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.comment-form button {
+    background: #13898f; /* رنگ اصلی */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.comment-form button:hover {
+    background: #0f6b72; /* رنگ تیره‌تر برای هاور */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .blog-header h1 {
+        font-size: 2rem;
+    }
+
+    .blog-main-container {
+        padding: 15px;
+    }
+
+    .blog-title {
+        font-size: 1.8rem;
+    }
+
+    .comments-title {
+        font-size: 1.3rem;
+    }
+
+    .form-title {
+        font-size: 1.3rem;
+    }
+}

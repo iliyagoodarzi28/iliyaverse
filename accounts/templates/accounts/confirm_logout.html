@@ -1,0 +1,51 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}درباره من{% endblock %}
+{% block content %}
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color:rgb(0, 0, 0);
+            padding: 50px;
+        }
+        .message {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #fff;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button, a {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+        .confirm-btn {
+            background-color: #dc3545;
+        }
+        .cancel-btn {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+    <div class="message">
+        <p>آیا مطمئن هستید که می‌خواهید خارج شوید؟</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="button-container">
+            <button type="submit" class="confirm-btn">بله، خارج شو</button>
+            <a href="{% url 'home' %}" class="cancel-btn">لغو</a>
+        </div>
+    </form>
+
+{% endblock %}

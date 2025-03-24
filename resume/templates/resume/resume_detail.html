@@ -1,0 +1,52 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}{{ resume.title }} - نمونه کار{% endblock %}
+
+{% block extra_headers %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<header class="resume-page-header" style="background-image: url('{{ resume.image_one.url }}');" >
+
+    <div class="resume-header-container">
+        <div class="resume-header-row">
+            <div class="resume-header-content">
+                <div class="resume-title-wrapper">
+                    <h1 class="resume-main-title">{{ resume.title }}</h1>
+                    <hr class="resume-title-divider">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="resume-main-container">
+    <section class="resume-info-header">
+        <div class="resume-info-metadata">
+            <span class="resume-date-label">تاریخ ایجاد: {{ resume.get_persian_date }}</span>
+            <span class="resume-date-label">تاریخ به‌روزرسانی: {{ resume.get_persian_date }}</span>
+        </div>
+    </section>
+
+    <section class="resume-content-section">
+        <article class="resume-description-content">
+            {{ resume.content|safe }}
+            {{ form.media }}
+
+        </article>
+
+
+        <nav class="resume-navigation-container">
+            <a href="{% url 'resume_list' %}" class="resume-back-link">
+                <i class="fas fa-arrow-right"></i> بازگشت به لیست نمونه کارها
+            </a>
+        </nav>
+    </section>
+</main>
+
+
+
+{% endblock %}

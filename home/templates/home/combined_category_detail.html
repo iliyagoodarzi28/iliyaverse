@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}{{category.name}}{% endblock %}
+
+{% block content %}
+<div class="categories-wrapper" dir="rtl">
+    <div class="articles-section">
+        <ul>
+            {% for category in categories %}
+                <li><a href="{% url 'blog_category_detail' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <div class="articles-list">
+            {% for category in categories %}
+                {% for blog in category.blogs.all %}
+                    <li><a href="{% url 'blog_detail' blog.slug %}">{{ blog.name }}</a></li>
+                {% endfor %}
+            {% endfor %}
+            {% if blogs %}
+                <ul>
+                    {% for blog in blogs %}
+                        <img src="{{ blog.image.url }}" class="blog-image" alt="Blog Photo">
+                        <li><a href="{% url 'blog_detail' blog.slug %}">{{ blog.name }}</a></li>
+                        ---------------------------------------------
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="resumes-section">
+        <ul>
+            {% for category in categories_resume %}
+                <li><a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <div class="resumes-list">
+            {% for category in categories_resume %}
+                {% for resume in category.resumes.all %}
+                    <li><a href="{% url 'resume_detail' resume.slug %}">{{ resume.title }}</a></li>
+                {% endfor %}
+            {% endfor %}
+            {% if resumes %}
+                <ul>
+                    {% for resume in resumes %}
+                        <img src="{{ resume.image_one.url }}" class="blog-image" alt="{{ resume.title }}">
+                        <li><a href="{% url 'resume_detail' resume.slug %}">{{ resume.title }}</a></li>
+                        ---------------------------------------------
+
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+body {
+    font-family: 'Roboto', sans-serif; /* Elegant font */
+    background-color: #121212; /* Dark background for the page */
+    color: #e0e0e0; /* Light text color */
+    margin: 0;
+    padding: 0;
+}
+
+.categories-wrapper {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    flex-wrap: wrap; /* Stack categories on small screens */
+    gap: 40px; /* Space between categories */
+    padding: 180px 20px;
+}
+
+.category-box {
+    background-color: #1e1e1e; /* Dark gray for boxes */
+    border: 1px solid #333; /* Subtle border */
+    border-radius: 10px; /* Smooth rounded corners */
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Dark shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    text-align: center;
+}
+
+.category-box h2 {
+    font-size: 1.6rem;
+    color: #ffffff; /* Bright text for headings */
+    margin-bottom: 15px;
+}
+
+.category-box ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.category-box li {
+    margin: 10px 0;
+}
+
+.category-box a {
+    text-decoration: none;
+    color: #13898f; /* Vibrant green links */
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.category-box a:hover {
+    color: #13898f; /* Lighter green on hover */
+    text-shadow: 1px 1px 5px #13898f; /* Glow effect */
+}
+
+.category-box:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7); /* Enhanced shadow */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-box {
+        width: 90%; /* Occupy most of the width on small screens */
+    }
+}

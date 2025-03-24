@@ -1,0 +1,81 @@
+/* General styles for dark theme */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.categories-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center elements */
+    padding: 180px 20px;
+}
+
+/* Articles section styles */
+.articles-section,
+.resumes-section {
+    background-color: #1e1e1e; /* Dark gray box */
+    border: 1px solid #333; /* Subtle border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Soft shadow */
+    width: 300px; /* Fixed width */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Title styling */
+.articles-section h2,
+.resumes-section h2 {
+    font-size: 1.6rem;
+    color: #ffffff; /* Bright text */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Links styling */
+.articles-section a,
+.resumes-section a {
+    text-decoration: none;
+    color: #13898f; /* Vibrant green links */
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.articles-section a:hover,
+.resumes-section a:hover {
+    color: #13898f; /* Lighter green on hover */
+    text-shadow: 1px 1px 5px rgba(129, 199, 132, 0.7); /* Glow effect */
+}
+
+/* List styling */
+.articles-list ul,
+.resumes-list ul {
+    list-style: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.articles-list li,
+.resumes-list li {
+    margin: 10px 0;
+}
+
+/* Hover effect for sections */
+.articles-section:hover,
+.resumes-section:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7); /* Enhanced shadow */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .articles-section,
+    .resumes-section {
+        width: 90%; /* Take up most of the screen */
+    }
+}

@@ -1,0 +1,60 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}ورود{% endblock %}
+{% block extra_headers %}
+<style>
+body {
+    background-color: #000; /* رنگ پس‌زمینه مشکی */
+    color: #13898f; /* رنگ متن سفید */
+    font-family: Arial, sans-serif; /* نوع فونت */
+}
+
+h2 {
+    color: #13898f; /* رنگ عنوان */
+}
+
+form {
+    background-color: #222; /* رنگ پس‌زمینه فرم */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+button {
+    background-color: #13898f; /* رنگ پس‌زمینه دکمه */
+    color: #fff; /* رنگ متن دکمه */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #666; /* رنگ پس‌زمینه دکمه در حالت هاور */
+}
+
+a {
+    color: #fff; /* رنگ لینک */
+}
+
+a:hover {
+    text-decoration: underline; /* زیرخط لینک در حالت هاور */
+}
+
+</style>
+
+
+{% endblock %}
+{% block content %}
+<center>
+<br><br>
+<h2>ورود به حساب کاربری</h2>
+<form method="post" dir="rtl">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">ورود</button>
+</form>
+<p>هنوز ثبت‌نام نکرده‌اید؟ <a href="{% url 'register' %}">ثبت‌نام کنید</a>.</p>
+</center>
+{% endblock %}

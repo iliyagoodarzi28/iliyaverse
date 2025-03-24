@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}دسته بندی{% endblock %}
+
+{% block content %}
+
+<div class="categories-wrapper" dir="rtl">
+    <div class="category-box articles-box">
+        <h2>دسته بندی مقالات</h2>
+        <ul>
+            {% for category in categories %}
+                <li><a href="{% url 'blog_category_detail' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="category-box resumes-box">
+        <h2>دسته بندی نمونه کارها</h2>
+        <ul>
+            {% for category in categories_resume %}
+                <li><a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

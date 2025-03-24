@@ -1,0 +1,101 @@
+/* General Editor Styles */
+.comment-editor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #000; /* تم مشکی */
+    color: #fff;
+    min-height: 100vh;
+}
+.editor-panel {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Header */
+.editor-heading {
+    font-size: 2rem;
+    color: #13898f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.editor-heading i {
+    margin-right: 8px;
+}
+
+/* Form Styles */
+.editor-form .input-wrapper {
+    margin-bottom: 20px;
+}
+.editor-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    color: #13898f;
+}
+.editor-form input,
+.editor-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 1rem;
+}
+.editor-form input:focus,
+.editor-form textarea:focus {
+    border-color: #13898f;
+    outline: none;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.primary-button,
+.secondary-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+}
+.primary-button {
+    background-color: #13898f;
+}
+.primary-button:hover {
+    background-color: #0f6b72;
+}
+.secondary-button {
+    background-color: #555;
+}
+.secondary-button:hover {
+    background-color: #333;
+}
+.primary-button i,
+.secondary-button i {
+    margin-left: 8px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .editor-heading {
+        font-size: 1.6rem;
+    }
+    .editor-panel {
+        padding: 20px;
+    }
+}

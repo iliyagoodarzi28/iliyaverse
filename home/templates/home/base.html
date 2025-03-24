@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %} {% endblock %}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/blog_detail.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/blog_b.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/category.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/category_detail.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/about_a.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/footers.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/delete.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/messages.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/resume_details.css' %}">  <!-- Link to an external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/resume_list.css' %}">  <!-- Link to an external CSS file -->
+    
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    
+    {% block extra_headers %}
+    {% endblock %}
+</head>
+<body>
+
+    {% include 'home/navbar.html' %}
+    {% include 'home/messages.html' %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        {% include 'home/footer.html' %}
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/clean-blog.min.js' %}"></script>
+</body>
+</html>

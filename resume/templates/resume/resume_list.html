@@ -1,0 +1,72 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}نمونه کارها{% endblock %}
+{% block extra_headers %}
+{% endblock %}
+{% block content %}
+
+
+
+
+
+
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>نمونه کار ها</h1>
+                    <hr class="small">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-preview">
+                <div class="blog-container" dir="rtl">
+                    <form class="search-form" method="get" action="">
+                        <input type="text" name="q" placeholder="جستجو..." value="{{ request.GET.q }}" class="search-input">
+                        <button type="submit" class="search-button">جستجو</button>
+                    </form>                    
+                    <ul>
+                        <div class="filter-form-container">
+                            <form method="get" class="filter-form">
+                                {{ form.as_p }}
+                                <button type="submit" class="filter-button">فیلتر</button>
+                            </form>
+                        </div>
+                    </ul>
+                    {% for resume in resumes %}
+                    <div class="blog-post">
+  
+                        <img src="{{ resume.image_one.url }}" class="blog-image" alt="{{ resume.title }}">
+                        <h2 class="blog-title">{{ resume.title }}</h2>
+                        <p class="blog-date">{{ resume.get_persian_date }}</p>
+                        <p>بازدیدها: {{ resume.views }}</p>
+                        <a href="{% url 'resume_detail' resume.slug %}" class="btn btn-primary">خواندن</a>
+                    </div>
+                {% empty %}
+                    <p>مقاله‌ای یافت نشد.</p>
+                {% endfor %}
+                {% with first_resume=resumes|first %}
+                {% if first_resume %}
+                    <div class="featured-content">
+                        <p>{{ first_resume.content|safe}}</p>
+                    </div>
+                {% endif %}
+                {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+{% endblock %}

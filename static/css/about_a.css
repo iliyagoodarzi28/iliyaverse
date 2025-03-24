@@ -1,0 +1,189 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* رنگ پس‌زمینه */
+    color: #ffffff; /* رنگ متن */
+}
+
+/* Header Styles */
+.big-header {
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0; /* فاصله داخلی */
+    text-align: center;
+    color: white; /* رنگ متن در هدر */
+}
+
+.giant-title h1 {
+    font-size: 48px; /* اندازه عنوان */
+    margin: 0;
+}
+
+.tinny-line {
+    width: 50px;
+    height: 3px;
+    background: #000000; /* رنگ خط */
+    margin: 10px auto; /* مرکز کردن خط */
+}
+
+.tiny-description {
+    font-size: 18px; /* اندازه توضیحات */
+}
+
+/* Content Styles */
+.big-content {
+    padding: 40px 20px; /* فاصله داخلی */
+}
+
+.rowy-content {
+    max-width: 800px; /* حداکثر عرض */
+    margin: 0 auto; /* مرکز کردن */
+}
+
+.wide-box {
+    background: #000000; /* رنگ پس‌زمینه کادر */
+    border-radius: 8px; /* گوشه‌های گرد */
+    padding: 20px; /* فاصله داخلی */
+    box-shadow: 0 2px 10px rgba(231, 215, 215, 0.1); /* سایه */
+}
+
+.infoy-stuff h2 {
+    font-size: 24px; /* اندازه عنوان اطلاعات تماس */
+    margin-top: 20px; /* فاصله بالای عنوان */
+}
+
+.billy-list {
+    list-style-type: none; /* حذف نقاط لیست */
+    padding: 0; /* حذف فاصله داخلی */
+}
+
+.billy-list li {
+    margin: 10px 0; /* فاصله بین آیتم‌ها */
+}
+
+.billy-list a {
+    color: #13898f; /* رنگ لینک */
+    text-decoration: none; /* حذف زیرخط */
+}
+
+.billy-list a:hover {
+    text-decoration: underline; /* زیرخط در حالت هاور */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .giant-title h1 {
+        font-size: 36px; /* اندازه عنوان در صفحه‌های کوچک */
+    }
+
+    .tiny-description {
+        font-size: 16px; /* اندازه توضیحات در صفحه‌های کوچک */
+    }
+
+    .big-content {
+        padding: 20px; /* فاصله داخلی در صفحه‌های کوچک */
+    }
+}
+ 
+
+/* General Styles for Latest Posts Section */
+.latest-posts {
+    background-color: #000000; /* رنگ پس‌زمینه */
+    padding: 40px 20px; /* فاصله داخلی */
+    border-radius: 8px; /* گوشه‌های گرد */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* سایه */
+    margin: 20px 0; /* فاصله بین بخش‌ها */
+}
+
+.latest-posts h2 {
+    text-align: center; /* مرکز کردن عنوان */
+    font-size: 28px; /* اندازه عنوان */
+    margin-bottom: 20px; /* فاصله زیر عنوان */
+    color: #13898f; /* رنگ عنوان */
+}
+
+/* List Styles */
+.latest-posts ul {
+    list-style-type: none; /* حذف نقاط لیست */
+    padding: 0; /* حذف فاصله داخلی */
+    display: flex; /* استفاده از فلیکس باکس */
+    flex-wrap: wrap; /* اجازه به آیتم‌ها برای شکستن به خط بعدی */
+    justify-content: center; /* مرکز کردن آیتم‌ها */
+}
+
+.latest-posts li {
+    background-color: #000000; /* رنگ پس‌زمینه هر پست */
+    border-radius: 8px; /* گوشه‌های گرد */
+    margin: 10px; /* فاصله بین پست‌ها */
+    padding: 20px; /* فاصله داخلی */
+    width: 300px; /* عرض ثابت برای هر پست */
+    box-shadow: 0 2px 5px rgba(117, 115, 115, 0.336); /* سایه */
+    transition: transform 0.3s; /* انیمیشن برای افکت هاور */
+}
+
+.latest-posts li:hover {
+    transform: translateY(-5px); /* حرکت به بالا در حالت هاور */
+}
+
+/* Image Styles */
+.post-image {
+    width: 100%; /* عرض کامل */
+    height: auto; /* حفظ نسبت تصویر */
+    border-radius: 8px; /* گوشه‌های گرد */
+}
+
+/* Title and Description Styles */
+.latest-posts h3 {
+    font-size: 20px; /* اندازه عنوان پست */
+    margin: 10px 0; /* فاصله بالا و پایین */
+    color: #13898f; /* رنگ عنوان */
+}
+
+.latest-posts p {
+    color: #13898f; /* رنگ متن توضیحات */
+    margin-bottom: 15px; /* فاصله زیر توضیحات */
+}
+
+/* Read More Link Styles */
+.read-more-link {
+    display: inline-block; /* نمایش به صورت بلوک */
+    background-color: #13898f; /* رنگ دکمه */
+    color: rgb(255, 255, 255); /* رنگ متن دکمه */
+    padding: 10px 15px; /* فاصله داخلی */
+    border-radius: 5px; /* گوشه‌های گرد */
+    text-decoration: none; /* حذف زیرخط */
+    transition: background-color 0.3s; /* انیمیشن برای تغییر رنگ */
+}
+
+.read-more-link:hover {
+    background-color: #000000; /* رنگ دکمه در حالت هاور */
+}
+
+/* All Posts Link Styles */
+.all-posts-link {
+    display: block; /* نمایش به صورت بلوک */
+    text-align: center; /* مرکز کردن متن */
+    margin-top: 20px; /* فاصله بالای لینک */
+    color: #13898f; /* رنگ لینک */
+    text-decoration: none; /* حذف زیرخط */
+    font-weight: bold; /* ضخیم کردن متن */
+}
+
+.all-posts-link:hover {
+    text-decoration: underline; /* زیرخط در حالت هاور */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .latest-posts ul {
+        flex-direction: column; /* تغییر به ستون در صفحه‌های کوچک */
+        align-items: center; /* مرکز کردن آیتم‌ها */
+    }
+
+    .latest-posts li {
+        width: 90%; /* عرض پست‌ها در صفحه‌های کوچک */
+    }
+}

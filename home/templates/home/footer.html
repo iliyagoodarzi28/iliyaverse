@@ -1,0 +1,64 @@
+<footer class="footer-section">
+    <div class="footer-container">
+        <div class="footer-row">
+            <!-- Contact Section -->
+            <div class="footer-column contact-column">
+                <h4 class="footer-title">اطلاعات تماس</h4>
+                <div class="contact-details">
+                    <p class="contact-info">
+                        <i class="fas fa-phone-alt"></i>{{ site_info.phone }}
+                    </p>
+                    <p class="contact-info">
+                        <i class="fas fa-envelope"></i> 
+                        <a href="mailto:{{ site_info.email }}" class="contact-link">{{ site_info.email }}</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Social Media Section -->
+            <div class="footer-column social-column">
+                <h4 class="footer-title">شبکه‌های اجتماعی</h4>
+                <ul class="social-list">
+                    {% if site_info.x %}
+                        <li class="social-item">
+                            <a href="{{ site_info.x }}" target="_blank" class="social-anchor">
+                                <i class="fab fa-twitter"></i> ایکس
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if site_info.instagram %}
+                        <li class="social-item">
+                            <a href="{{ site_info.instagram }}" target="_blank" class="social-anchor">
+                                <i class="fab fa-instagram"></i> اینستاگرام
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if site_info.linkedin %}
+                        <li class="social-item">
+                            <a href="{{ site_info.linkedin }}" target="_blank" class="social-anchor">
+                                <i class="fab fa-linkedin"></i> لینکدین
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if site_info.youtube %}
+                        <li class="social-item">
+                            <a href="{{ site_info.youtube }}" target="_blank" class="social-anchor">
+                                <i class="fab fa-youtube"></i> یوتیوب
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if site_info.github %}
+                        <li class="social-item">
+                            <a href="{{ site_info.github }}" target="_blank" class="social-anchor">
+                                <i class="fab fa-github"></i> گیت‌هاب
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright-text">© {{ current_year }} تمامی حقوق محفوظ است | طراحی و توسعه توسط ایلیا گودرزی</p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}درباره من{% endblock %}
+{% block content %}
+<header class="big-header">
+    <div class="boxy-container">
+        <div class="rowy-row">
+            <div class="col-wide">
+                <div class="giant-title">
+                    <h1>درباره من</h1>
+                    <hr class="tinny-line">
+                    <span class="tiny-description">این کاری است که من انجام می دهم</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="big-content">
+    <div class="rowy-content">
+        <div class="wide-box">
+            <p dir="rtl">{{ site_info.description }}</p>
+            <div class="infoy-stuff">
+                <h2 dir="rtl">اطلاعات تماس</h2>
+                <p dir="rtl">در صورت تمایل از طریق پلتفرم های زیر با من تماس بگیرید</p>
+                <ul class="billy-list" dir="rtl">
+                    {% if site_info.phone %}
+                        <li>شماره تلفن: {{ site_info.phone }}</li>
+                    {% endif %}
+                    {% if site_info.email %}
+                        <li>ایمیل: <a href="mailto:{{ site_info.email }}" target="_blank" rel="noopener noreferrer">{{ site_info.email }}</a></li>
+                    {% endif %}
+                    {% if site_info.x %}
+                        <li>ایکس: <a href="{{ site_info.x }}" target="_blank" rel="noopener noreferrer">{{ site_info.x }}</a></li>
+                    {% endif %}
+                    {% if site_info.instagram %}
+                        <li>اینستاگرام: <a href="{{ site_info.instagram }}" target="_blank" rel="noopener noreferrer">{{ site_info.instagram }}</a></li>
+                    {% endif %}
+                    {% if site_info.linkedin %}
+                        <li>لینکدین: <a href="{{ site_info.linkedin }}" target="_blank" rel="noopener noreferrer">{{ site_info.linkedin }}</a></li>
+                    {% endif %}
+                    {% if site_info.youtube %}
+                        <li>یوتیوب: <a href="{{ site_info.youtube }}" target="_blank" rel="noopener noreferrer">{{ site_info.youtube }}</a></li>
+                    {% endif %}
+                    {% if site_info.github %}
+                        <li>گیت هاب: <a href="{{ site_info.github }}" target="_blank" rel="noopener noreferrer">{{ site_info.github }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "home/base.html" %}
+{% block title %}ادمین{% endblock %}
+
+{% block content %}
+    <style>
+        /* Center the content */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            flex-direction: column; /* Stack items vertically */
+            text-align: center;
+        }
+
+        /* Style the message */
+        .message {
+            font-size: 2rem; /* Increased font size */
+            margin-bottom: 20px;
+            color: #13898f; /* Accent color */
+        }
+
+        /* Style the links */
+        .links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #13898f; /* Accent color */
+            font-size: 2rem; /* Increased font size */
+            transition: color 0.3s ease-in-out;
+        }
+
+        .links a:hover {
+            color: #0f7a7f; /* Darker shade on hover */
+            
+        }
+    </style>
+
+    <div class="center-container">
+        <h2 class="message">{{ message }}</h2>
+        <div class="links">
+            <a href="{% url 'register' %}">ثبت‌نام</a> | 
+            <a href="{% url 'login' %}">ورود</a>
+        </div>
+    </div>
+{% endblock %}
