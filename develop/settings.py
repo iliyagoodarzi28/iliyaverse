@@ -83,21 +83,13 @@ WSGI_APPLICATION = 'develop.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
 DATABASES = {
-
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # مسیر کامل فایل SQLite
+    }
 }
-DB_ENGINE = os.getenv('DB_ENGINE', 'sqlite3')
-if DEBUG and DB_ENGINE == 'sqlite3':
-    DATABASES['default'] = {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': os.path.join('db.sqlite3'),
-    }
-else:
-    DATABASES['default'] = {
-            'ENGINE': 'django.db.backends.postgresql',
-    }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
