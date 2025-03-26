@@ -1,0 +1,8 @@
+{
+  "app": "iliyablog",
+  "port": 80,
+  "build": {
+    "location": "iran"
+  },
+  "disks": []
+}

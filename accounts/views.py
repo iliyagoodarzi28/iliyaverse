@@ -3,16 +3,15 @@ from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.views import View
-from django.contrib.auth import logout
-from django.shortcuts import redirect,render
+from django.shortcuts import redirect, render
 
 
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'accounts/register.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('login')
 
     def form_valid(self, form):
         user = form.save()
@@ -24,6 +23,7 @@ class RegisterView(CreateView):
     def form_invalid(self, form):
         messages.error(self.request, 'خطایی رخ داده است. لطفاً دوباره تلاش کنید.')
         return super().form_invalid(form)
+
 
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
@@ -45,6 +45,7 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         # Redirect to 'home' or another page after login
         return reverse_lazy('home')
+
 
 class CustomLogoutView(View):
     def get(self, request):
