@@ -8,14 +8,15 @@ from django.views import View
 from django.shortcuts import redirect, render
 
 
+
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'accounts/register.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('login')  # URL برای هدایت پس از ثبت‌نام موفق
 
     def form_valid(self, form):
-        user = form.save()
-        # Log the user in after successful registration
+        user = form.save()  # ذخیره کاربر جدید
+        # ورود کاربر پس از ثبت‌نام موفق
         login(self.request, user)
         messages.success(self.request, 'ثبت‌نام با موفقیت انجام شد!')
         return super().form_valid(form)
