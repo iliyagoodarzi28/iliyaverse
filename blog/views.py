@@ -42,7 +42,6 @@ class BlogView(View):
         })
 
 
-
 class BlogDetailView(View):
     def get(self, request, slug):
         blog = get_object_or_404(Blog, slug=slug)
@@ -61,7 +60,6 @@ class BlogDetailView(View):
         
         # بررسی اینکه آیا کاربر وارد شده است یا خیر
         if not request.user.is_authenticated:
-            # نمایش پیغام و سوال برای ثبت‌نام یا ورود
             return render(request, 'accounts/login_prompt.html', {
                 'message': "شما ثبت نام نکرده‌اید. آیا می‌خواهید ثبت‌نام کنید یا وارد شوید؟"
             })
@@ -70,7 +68,7 @@ class BlogDetailView(View):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.blog = blog
-            comment.user = request.user
+            comment.user = request.user  # تنظیم کاربر
             comment.save()
             return redirect('blog_detail', slug=blog.slug)
 
@@ -81,7 +79,6 @@ class BlogDetailView(View):
             'form': form
         })
 
-
 class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
     form_class = CommentForm
@@ -89,12 +86,10 @@ class CommentUpdateView(LoginRequiredMixin, UpdateView):
     login_url = 'login'  # URL صفحه ورود
 
     def get_queryset(self):
-        # فقط کامنت‌هایی که متعلق به کاربر فعلی هستند را برمی‌گرداند
         return Comment.objects.filter(user=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy('blog_detail', kwargs={'slug': self.object.blog.slug})
-    
 
 class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
@@ -102,11 +97,11 @@ class CommentDeleteView(LoginRequiredMixin, DeleteView):
     login_url = 'login'  # URL صفحه ورود
 
     def get_queryset(self):
-        # فقط کامنت‌هایی که متعلق به کاربر فعلی هستند را برمی‌گرداند
         return Comment.objects.filter(user=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy('blog_detail', kwargs={'slug': self.object.blog.slug})
+    
 
 class CategoryListView(ListView):
     model = Category

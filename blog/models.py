@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.utils import timezone
 import jdatetime
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
+
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
@@ -44,6 +46,8 @@ class Comment(models.Model):
     email = models.EmailField()
     content = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)  # اضافه کردن فیلد user
+
 
     def __str__(self):
         return f'Comment by {self.name} on {self.blog}'
