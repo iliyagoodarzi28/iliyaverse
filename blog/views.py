@@ -80,7 +80,7 @@ class BlogDetailView(View):
             'comments': comments,
             'form': form
         })
-    
+
 
 class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
@@ -88,13 +88,22 @@ class CommentUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'blog/edit_comment.html'
     login_url = 'login'  # URL صفحه ورود
 
+    def get_queryset(self):
+        # فقط کامنت‌هایی که متعلق به کاربر فعلی هستند را برمی‌گرداند
+        return Comment.objects.filter(user=self.request.user)
+
     def get_success_url(self):
         return reverse_lazy('blog_detail', kwargs={'slug': self.object.blog.slug})
+    
 
 class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = 'blog/delete_comment.html'
     login_url = 'login'  # URL صفحه ورود
+
+    def get_queryset(self):
+        # فقط کامنت‌هایی که متعلق به کاربر فعلی هستند را برمی‌گرداند
+        return Comment.objects.filter(user=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy('blog_detail', kwargs={'slug': self.object.blog.slug})
