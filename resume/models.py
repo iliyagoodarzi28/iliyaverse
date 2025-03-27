@@ -1,7 +1,6 @@
 from django.db import models
 import jdatetime
 from django.utils.text import slugify
-from django_summernote.fields import SummernoteTextField
 from ckeditor.fields import RichTextField
 
 

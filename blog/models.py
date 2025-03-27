@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 import jdatetime
-from django_summernote.fields import SummernoteTextField
 from ckeditor.fields import RichTextField
 
 class Category(models.Model):
