@@ -6,18 +6,16 @@ from django.views.generic import ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .forms import CommentForm, BlogFilterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-import markdown
-
 
 
 def latest_posts(request):
-    posts = Blog.objects.all().order_by('-created_at')[:3]  # آخرین ۳ مقاله
-    return posts
+    return Blog.objects.all().order_by('-created_at')[:3]  # آخرین ۳ مقاله
+
 
 class BlogView(View):
     def get(self, request):
         form = BlogFilterForm(request.GET or None)
-        blogs = Blog.objects.all()  # Default to all blogs
+        blogs = Blog.objects.all()
 
         if form.is_valid():
             filter_choice = form.cleaned_data['filter_by']
@@ -57,8 +55,7 @@ class BlogDetailView(View):
 
     def post(self, request, slug):
         blog = get_object_or_404(Blog, slug=slug)
-        
-        # بررسی اینکه آیا کاربر وارد شده است یا خیر
+
         if not request.user.is_authenticated:
             return render(request, 'accounts/login_prompt.html', {
                 'message': "شما ثبت نام نکرده‌اید. آیا می‌خواهید ثبت‌نام کنید یا وارد شوید؟"
@@ -68,7 +65,7 @@ class BlogDetailView(View):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.blog = blog
-            comment.user = request.user  # تنظیم کاربر
+            comment.user = request.user
             comment.save()
             return redirect('blog_detail', slug=blog.slug)
 
@@ -79,29 +76,31 @@ class BlogDetailView(View):
             'form': form
         })
 
+
 class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
     form_class = CommentForm
     template_name = 'blog/edit_comment.html'
-    login_url = 'login'  # URL صفحه ورود
+    login_url = 'login'
 
     def get_queryset(self):
         return Comment.objects.filter(user=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy('blog_detail', kwargs={'slug': self.object.blog.slug})
+
 
 class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = 'blog/delete_comment.html'
-    login_url = 'login'  # URL صفحه ورود
+    login_url = 'login'
 
     def get_queryset(self):
         return Comment.objects.filter(user=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy('blog_detail', kwargs={'slug': self.object.blog.slug})
-    
+
 
 class CategoryListView(ListView):
     model = Category

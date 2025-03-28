@@ -42,10 +42,8 @@
                 </div>
                 <p class="comment-content">{{ comment.content }}</p>
                 <div class="comment-actions">
-                    {% if request.user == comment.author %}
-                        <a href="{% url 'edit_comment' comment.id %}" class="action-btn comment-edit-btn">ویرایش</a>
-                        <a href="{% url 'delete_comment' comment.id %}" class="action-btn comment-delete-btn">حذف</a>
-                    {% endif %}
+                    <a href="{% url 'edit_comment' comment.id %}" class="action-btn comment-edit-btn">ویرایش</a>
+                    <a href="{% url 'delete_comment' comment.id %}" class="action-btn comment-delete-btn">حذف</a>
                 </div>
             </div>
         {% empty %}
