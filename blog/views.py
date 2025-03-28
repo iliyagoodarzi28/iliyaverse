@@ -48,8 +48,6 @@ class BlogView(View):
 
 
 
-
-
 class BlogDetailView(View):
     def get(self, request, slug):
         blog = get_object_or_404(Blog, slug=slug)
@@ -59,8 +57,11 @@ class BlogDetailView(View):
         form = CommentForm()
         rating_form = RatingForm()
 
-        # بررسی اینکه آیا کاربر قبلاً امتیاز داده است
-        user_rating = blog.ratings.filter(user=request.user).first()
+        # بررسی اینکه آیا کاربر وارد شده است
+        user_rating = None
+        if request.user.is_authenticated:
+            user_rating = blog.ratings.filter(user=request.user).first()
+
         average_rating = blog.ratings.aggregate(Avg('score')).get('score__avg', 0) or 0
 
         return render(request, 'blog/blog_detail.html', {
@@ -113,8 +114,6 @@ class BlogDetailView(View):
             'rating_form': rating_form,
             'average_rating': average_rating,
         })
-    
-
 
 
 
