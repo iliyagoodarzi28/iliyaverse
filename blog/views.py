@@ -1,21 +1,24 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import Blog, Category, Comment
+from .models import Blog, Category, Comment, Rating
 from django.db.models import Q
 from django.views.generic import ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .forms import CommentForm, BlogFilterForm
+from .forms import CommentForm, BlogFilterForm, RatingForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+import markdown
+from django.db.models import Avg
+
 
 
 def latest_posts(request):
-    return Blog.objects.all().order_by('-created_at')[:3]  # آخرین ۳ مقاله
-
+    posts = Blog.objects.all().order_by('-created_at')[:3]  # آخرین ۳ مقاله
+    return posts
 
 class BlogView(View):
     def get(self, request):
         form = BlogFilterForm(request.GET or None)
-        blogs = Blog.objects.all()
+        blogs = Blog.objects.all()  # Default to all blogs
 
         if form.is_valid():
             filter_choice = form.cleaned_data['filter_by']
@@ -40,6 +43,13 @@ class BlogView(View):
         })
 
 
+
+
+
+
+
+
+
 class BlogDetailView(View):
     def get(self, request, slug):
         blog = get_object_or_404(Blog, slug=slug)
@@ -47,10 +57,19 @@ class BlogDetailView(View):
         blog.save()
         comments = blog.comments.all()
         form = CommentForm()
+        rating_form = RatingForm()
+
+        # بررسی اینکه آیا کاربر قبلاً امتیاز داده است
+        user_rating = blog.ratings.filter(user=request.user).first()
+        average_rating = blog.ratings.aggregate(Avg('score')).get('score__avg', 0) or 0
+
         return render(request, 'blog/blog_detail.html', {
             'blog': blog,
             'comments': comments,
-            'form': form
+            'form': form,
+            'rating_form': rating_form,
+            'average_rating': average_rating,
+            'user_rating': user_rating,  # ارسال امتیاز کاربر به الگو
         })
 
     def post(self, request, slug):
@@ -61,6 +80,21 @@ class BlogDetailView(View):
                 'message': "شما ثبت نام نکرده‌اید. آیا می‌خواهید ثبت‌نام کنید یا وارد شوید؟"
             })
 
+        # بررسی امتیازدهی
+        if 'rating' in request.POST:
+            # بررسی اینکه آیا کاربر قبلاً امتیاز داده است
+            if blog.ratings.filter(user=request.user).exists():
+                return redirect('blog_detail', slug=blog.slug)  # اگر امتیاز داده، به صفحه جزئیات برگرد
+
+            rating_form = RatingForm(request.POST)
+            if rating_form.is_valid():
+                rating = rating_form.save(commit=False)
+                rating.blog = blog
+                rating.user = request.user
+                rating.save()
+                return redirect('blog_detail', slug=blog.slug)
+
+        # بررسی نظرات
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
@@ -70,37 +104,47 @@ class BlogDetailView(View):
             return redirect('blog_detail', slug=blog.slug)
 
         comments = blog.comments.all()
+        average_rating = blog.ratings.aggregate(Avg('score')).get('score__avg', 0) or 0
+
         return render(request, 'blog/blog_detail.html', {
             'blog': blog,
             'comments': comments,
-            'form': form
+            'form': form,
+            'rating_form': rating_form,
+            'average_rating': average_rating,
         })
+    
+
+
+
+
+
+
 
 
 class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
     form_class = CommentForm
     template_name = 'blog/edit_comment.html'
-    login_url = 'login'
+    login_url = 'login'  # URL صفحه ورود
 
     def get_queryset(self):
         return Comment.objects.filter(user=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy('blog_detail', kwargs={'slug': self.object.blog.slug})
-
 
 class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = 'blog/delete_comment.html'
-    login_url = 'login'
+    login_url = 'login'  # URL صفحه ورود
 
     def get_queryset(self):
         return Comment.objects.filter(user=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy('blog_detail', kwargs={'slug': self.object.blog.slug})
-
+    
 
 class CategoryListView(ListView):
     model = Category
@@ -116,3 +160,6 @@ class CategoryDetailView(View):
             'category': category,
             'blogs': blogs
         })
+    
+
+    

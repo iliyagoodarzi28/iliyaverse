@@ -56,3 +56,15 @@ class Comment(models.Model):
         # تبدیل تاریخ میلادی به تاریخ شمسی
         persian_date = jdatetime.datetime.fromgregorian(datetime=self.created_at)
         return persian_date.strftime('%Y/%m/%d')
+    
+
+
+
+
+class Rating(models.Model):
+    blog = models.ForeignKey(Blog , on_delete=models.CASCADE, related_name='ratings')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    score = models.IntegerField()  # امتیاز (مثلاً از 1 تا 5)
+
+    class Meta:
+        unique_together = ('blog', 'user')  # هر کاربر فقط می‌تواند یک بار به هر پست امتیاز دهد

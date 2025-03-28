@@ -52,12 +52,24 @@
     </section>
 
     <section class="comment-form-section">
-        <h3 class="form-title">ارسال نظر</h3>
+        <h3>ارسال نظر</h3>
         <form method="post" class="comment-form">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="action-btn form-submit-btn">ارسال نظر</button>
         </form>
+    </br>
+        <h3>امتیازدهی</h3>
+        {% if user_rating %}
+            <p>شما قبلاً به این پست امتیاز داده‌اید: {{ user_rating.score }}</p>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                {{ rating_form.as_p }}
+                <button type="submit" name="rating">ارسال امتیاز</button>
+            </form>
+        {% endif %}
+            <h3>امتیاز میانگین: {{ average_rating|floatformat:1 }}</h3>
     </section>
 </div>
 

@@ -1,6 +1,6 @@
 # forms.py
 from django import forms
-from .models import Comment
+from .models import Comment , Rating
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -22,3 +22,13 @@ class BlogFilterForm(forms.Form):
     ]
     
     filter_by = forms.ChoiceField(choices=FILTER_CHOICES, label="فیلتر بلاگ")
+
+
+
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        fields = ['score']
+        widgets = {
+            'score': forms.Select(choices=[(i, i) for i in range(1, 6)])  # انتخاب امتیاز از 1 تا 5
+        }    
