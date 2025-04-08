@@ -15,6 +15,7 @@ def latest_posts(request):
     posts = Blog.objects.all().order_by('-created_at')[:3]  # آخرین ۳ مقاله
     return posts
 
+
 class BlogView(View):
     def get(self, request):
         form = BlogFilterForm(request.GET or None)
@@ -23,12 +24,21 @@ class BlogView(View):
         if form.is_valid():
             filter_choice = form.cleaned_data['filter_by']
             filter_map = {
-                'most_viewed': '-views',
-                'latest': '-date',
-                'oldest': 'date'
+                'most_viewed': '-views',  # Order by views in descending order
+                'latest': '-date',        # Order by date in descending order
+                'oldest': 'date',         # Order by date in ascending order
+                'lowest_rating': 'average_rating',  # Assuming you have a way to aggregate ratings
+                'highest_rating': '-average_rating', # Assuming you have a way to aggregate ratings
             }
+
+            # Annotate blogs with average rating if filtering by rating
+            if filter_choice in ['lowest_rating', 'highest_rating']:
+                blogs = blogs.annotate(average_rating=Avg('ratings__score'))
+
+            # Order the blogs based on the selected filter
             blogs = blogs.order_by(filter_map.get(filter_choice, 'date'))
 
+        # Handle search query
         search_query = request.GET.get('q')
         if search_query:
             blogs = blogs.filter(
@@ -41,7 +51,6 @@ class BlogView(View):
             'blogs': blogs,
             'form': form
         })
-
 
 
 

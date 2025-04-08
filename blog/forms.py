@@ -18,6 +18,9 @@ class BlogFilterForm(forms.Form):
         ('most_viewed', 'پر بازدیدترین'),
         ('latest', 'جدید ترین'),
         ('oldest', 'قدیمی ترین'),
+        ('lowest_rating', 'کمترین امتیاز'),
+        ('highest_rating', 'بیشترین امتیاز'),
+        
         
     ]
     
